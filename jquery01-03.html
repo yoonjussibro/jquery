@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 01-03</title>
+
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        // jquery 혀과 : jquery에서 제공하는 함수를 사용하면 hide,fade,slide 등의 효과를 쉽게 사용할 수 있음
+        // - css의 animation 중 hide, show, fade out, fade in, slide down, slide up 기능을 함수로 제공함
+        // - hide(), show(), toggle() : display : none 을 사용한 것과 동일한 효과
+            // - 시간은 1/1000초를 기준으로 사용함(1초가 1000임),    slow, fast
+        // - 사용법 : $(선택자).hide(속도, 실행함수);
+
+        // fade효과 : jquery에서 fadeIn, fadeOut, fadeToggle, fadeTo 함수를 제공함
+            // -시간은 1/1000초를 사용 (slow,fast 사용)
+        // - 사용법 : $(선택자).fadeIn(시간,실행함수);
+        // fadeTo(시간,투명도,실행함수) - 사용자가 지정한 투명도로 변경하는 함수 
+
+        
+
+
+        $(document).ready(function() {
+            $("#btnHide").on("click", function() {
+                $("#HideShow").hide();
+            });
+            
+            $("#btnShow").on("click", function() {
+                $("#HideShow").show();
+            });
+
+            // 시간 사용
+            $("#btnHide2").on("click", function() {
+                $("#HideShow2").hide("slow");
+            });
+            
+            $("#btnShow2").on("click", function() {
+                $("#HideShow2").show(2000);
+            });
+
+            $("#btnToggle").on("click", function() {
+                $("#HideShowToggle").toggle("fast");
+            });
+
+            // fade 효과
+
+            $("#btnFadeIn").on("click", function() {
+                $("#div01 > .red").fadeIn();
+                $("#div01 > .green").fadeIn("slow");
+                $("#div01 > .blue").fadeIn(3000);
+            });
+
+            $("#btnFadeOut").on("click", function() {
+                $("#div01 > .red").fadeOut();
+                $("#div01 > .green").fadeOut("slow");
+                $("#div01 > .blue").fadeOut(3000);
+            });
+
+            $("#btnFadeToggle").on("click", function() {
+                $("#div01 > .red").fadeToggle();
+                $("#div01 > .green").fadeToggle("slow");
+                $("#div01 > .blue").fadeToggle(3000);
+            });
+
+            $("#btnFadeTO").on("click", function() {
+                $("#div02 > .red").fadeTo("fast", 0.2);
+                $("#div02 > .green").fadeTo(2000, 0.5);
+                $("#div02 > .blue").fadeTo("slow", 0.8);
+            })
+        });
+    </script>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        #div01 > .box {display: none;}
+        .red { background-color: red;}
+        .green { background-color: green;}
+        .blue { background-color: blue;}
+    </style>
+</head>
+<body>
+    <h3>Hide/Show</h3>
+    <p id="HideShow">아래의 버튼을 클릭하면 사라지거나 나옴</p>
+    <button id="btnHide" type="button">Hide</button>
+    <button id="btnShow" type="button">Show</button>
+
+    <br>
+    <h4>Hide/Show에 시간 사용</h4>
+    <button type="button" id="btnHide2">Hide</button>
+    <button type="button" id="btnShow2">Show</button>
+    <p id="HideShow2">버튼 클릭시 사라지거나 출력됨</p>
+    
+    <br>
+    <h4>toggle 사용</h4>
+    <button type="button" id="btnToggle">Toggle</button>
+    <p id="HideShowToggle">토글 버튼 클릭시 사라지거나 출력됨</p>
+
+    <br><hr><br>
+
+    <h3>fadeIn</h3>
+    <div id="div01">
+        <button id="btnFadeIn">Fade In 효과</button>
+        <button id="btnFadeOut">Fade Out 효과</button>
+        <button id="btnFadeToggle">Fade Toggle 효과</button>
+        <div class="box red"></div>
+        <div class="box green"></div>
+        <div class="box blue"></div>
+    </div>
+
+    <br>
+
+    <h4>fadeTO</h4>
+    <div id="div02">
+        <button id="btnFadeTO">FadeTo 효과</button>
+        <div class="box red"></div>
+        <div class="box green"></div>
+        <div class="box blue"></div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

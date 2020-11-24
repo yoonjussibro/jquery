@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 1-5</title>
+    
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.2.0.js"></script>
+
+    <script>
+    // stop() : 애니메이션이 효과가 끝나기 전에 애니메이션이 중지시키는 함수
+    // 사용법 : $(선택자).stop(stopAll,goToEnd)
+        // - stopAll : 기본값 false, 애니메이션 대기열도 함께 중지하는지 여부
+        // - goTOEnd : 기본값 false, 애니메이션이 stop()함수 실행과 동시에 완료로 처리할 것인지 여부
+
+    // jquery 메서드 체이닝 : 체이닝이란 jquery 함수(메서드)를 연결해서 한번에 사용하는 방법
+        // - 동일한 html 태그에 대해서 jquery 함수를 한번에 하나씩 실행하는 것이 아니라 연속적으로 이어서 기술하는 방식
+        // - html 태그를 한번 검색하여 여러가지 함수를 한번에 실행가능함
+        // '.'기호를 사용하여 함수를 이어서 기술하면 됨
+        // 사용법 : $(선택자).jquery함수1().jquery함수2().jquery함수3()....;
+    $(document).ready(function() {
+        $("#div01 > .flip").on("click", function() {
+            $("#div01 > .panel").slideDown(5000);
+            $("#div01 > .panel").slideUp(5000);
+        });
+        
+        $("#btnStop").on("click", function() {
+            $("#div01 > .panel").stop(false, true);
+        });
+
+        // 메서드 체이닝
+        $("#btn").on("click", function() {
+            $("#p1").css("color", "red").slideUp(2000).slideDown(2000).fadeOut(2000).fadeIn(2000);
+        });
+    });
+
+    </script>
+
+    <style>
+        .flip, .panel {
+            padding : 5px;
+            font-size: 18px;
+            text-align: center;
+            background-color: darkgray;
+            color: white;
+            border: 1px solid black;
+        }
+
+        #div01 > .panel {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <button id="btnStop">클릭 시 슬라이드 다운 멈춤</button><br><br>
+        <div class="flip">클릭 시 슬라이드 다운</div>
+        <div class="panel">클릭 시 화면에 출력되는 div</div>
+    </div>
+
+    <br><hr><br>
+    
+    <div id="div02">
+        <p id="p1">버튼 클릭 시 이벤트 동작</p>
+        <button type="button" id="btn">클릭해주세요.</button>
+    </div>
+</body>
+</html>

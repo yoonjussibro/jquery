@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 01-04</title>
+
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.2.0.js"></script>
+
+    <script>
+    // slide 효과 : jquery에서 slideDown, slideUp, slideToggle 함수를 제공함
+    // - 시간은 1/1000초를 사용(slow,fast 사용)
+    // - 사용법 : $(선택자).slide(시간,실행함수);
+
+    // animate : jquery를 통해서 사용자 지정 애니메이션을 만들 수 있는 함수
+        // - animate를 이용하면 css의 animation 속성을 손쉽게 만들 수 있음
+        // - 시간은 1/1000초 사용 (slow, fast 사용)
+        // - 애니메이션 동작을 할 속성을 여러개 지정할 수 있음
+        // - 속성값 입력 시 상대값으로 데이터를 입력할 수 있음
+            // - +=, -=을 사용하여 기존의 속성값에 데이터를 추가할 수 있음
+            // 여러개의 애니메이션을 사용하여 단계적으로 동작하는 애니메이션을 제작할 수 있음
+            // - animate 에서 속성명을 입력할 때 CSS속성명이 '-'가 들어가 있는 속성명은 '-'를 생략하고 이어지는 첫 영문자를 대문자로 입력
+            // -ex) fontSize, backgroundColor, paddingLeft, marginTop
+        // - 사용법 : $(선택자).animate({속성명1:속성값1, 속성명2:속성값2,...}, 속도, 실행함수);
+
+    
+        
+
+        $(document).ready(function() {
+            $("#div01 > .flip").on("click", function () {
+                $("#div01 > .panel").slideDown(100);
+            });
+            $("#div02 > .flip").on("click", function () {
+                $("#div02 > .panel").slideUp(100);
+            });
+            $("#div03 > .flip").on("click", function () {
+                $("#div03 > .panel").slideToggle(100);
+            });
+
+            // animate 함수
+            $("#div04 > .ani1").on("click", function() {
+                $("#div04 > .ani1").animate({left : "250px"});
+            });
+
+            $("#div04 > .ani2").on("click", function() {
+                $("#div04 > .ani2").animate({ 
+                    left: "250px", 
+                    opacity: "0.5", 
+                    height: "150px", 
+                    width: "150px",
+                    backgroundColor : "red"
+                });
+            });
+
+            $("#div04 > .ani3").on("click", function() {
+                $("#div04 > .ani3").animate({
+                    left : "250px",
+                    height : "+=100px",
+                    width : "+=100"
+                });
+            });
+
+            $("#div04 > .ani4").on("click", function() {
+                $("#div04 > .ani4").animate({
+                    height : "300px",
+                    opacity : "0.4"
+                }, "fast");
+
+                $("#div04 > .ani4").animate({
+                    width : "300px",
+                    opacity : "0.8"
+                }, "fast");
+
+                $("#div04 > .ani4").animate({
+                    height : "100px",
+                    opacity : "0.4"
+                }, "fast");
+                $("#div04 > .ani4").animate({
+                    width : "100px",
+                    opacity : "0.8"
+                }, "fast");
+            });
+
+            $("#divex > .pont1").on("click", function() {
+                $("#divex > .pont1").animate({left : "150px"});
+                $("#divex > .pont1").animate({
+                    width : "100px",
+                    height : "100px",
+                    backgroundColor : "aqua"
+                });
+                $("#divex > .pont1").animate({fontSize : "8px"});
+                $("#divex > .pont1").animate({left : "300px"});
+                $("#divex > .pont1").animate({fontSize : "24px"});
+                $("#divex > .pont1").animate({
+                    width : "200px",
+                    height : "200px",
+                    backgroundColor : "red"
+                });
+
+            
+            });
+
+
+
+            
+        });
+    </script>
+
+    <style>
+        .panel, .flip {
+            padding: 5px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: 1px solid lightgray;
+        }
+
+        .panel{ padding: 50px;}
+
+        #div01 > .panel { display: none; }
+
+        #div04 {
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+
+        #div04 > .ani1 {
+            position: absolute;
+            background-color: yellowgreen;
+        }
+
+        #div04 > .ani2 {
+            position: absolute;
+            background-color: yellowgreen;
+            top: 150px;
+            left: 0px;
+        } 
+
+        #div04 > .ani3 {
+            position: absolute;
+            background-color: yellowgreen;
+            left: 0px;
+            top: 255px;
+        }
+
+        #div04 > .ani4 {
+            position: absolute;
+            background-color: yellowgreen;
+            left: 0px;
+            top: 360px;
+        }
+
+        #divex > .pont1 {
+            position: absolute;
+            height: 200px;
+            width: 200px;
+            font-size: 16px;
+            text-align: center;
+            left: 10px;
+            top: 1200px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>slide down</h3>
+        <div class="flip">클릭 시 아래의 div 영역 표시</div>
+        <div class="panel">클릭 시 표시되는 div 영역</div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div02">
+        <h3>slide up</h3>
+        <div class="flip">클릭 시 아래의 div 영역 숨김</div>
+        <div class="panel">클릭 시 숨겨지는 div 영역</div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>slide toggle</h3>
+        <div class="flip">클릭 시 아래의 div 영역 숨김/표시</div>
+        <div class="panel">클릭 시 숨김/표시되는 div 영역</div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div04">
+        <h3>animate</h3>
+        <div class="box ani1"></div>
+        <br>
+        <div class="box ani2">클릭 시 이동하면서 커지고 투명해짐</div>
+        <br>
+        <div class="box ani3">클릭 시 상대값을 사용하여 크기가 커짐</div>
+        <br>
+        <div class="box ani4">클릭 시 애니메이션 연계동작</div>
+
+    </div>
+
+<br><br><br><hr><br><br><br>
+    <!-- 문제 1) animate 함수를 사용하여 div 태그의 위치를 왼쪽에서 오른쪽으로 300px 이동 시키고, 이동 시 div 태그 내의 p 태그의 글자가 8px로 작아졌다가 다시 24px로 커지는 애니메이션을 완성하세요 -->
+    <!-- div 태그의 크기 width : 200px, height : 200px -->
+    <!-- p 태그의 글자 : hello(시작시 글자 크기 : 16px/1em, 작아졌을 경우 : 8px/0.5em, 커졌을 경우 : 24px/2em) -->
+    <!-- 글자색 : black -->
+
+    <div id="divex">
+        <p class="pont1">Hello</p>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

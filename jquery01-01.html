@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 1-1</title>
+
+    <!-- <script src="./jquery-3.5.1.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+    // 1. jquery 사이트에서 jquery 파일을 다운로드 해서 사용
+        // - 자신의 서버에 파일을 등록해서 사용하기 때문에 로딩 시간이 짧음
+        // - 자신의 서버에 문제가 없는 이상 무조건 동작을 보장
+    // 2. cdn(contents delivery network)를 통해서 jquery파일을 실시간으로 로딩하여 사용
+        // - 외부 서버에서 파일을 로딩하기 때문에 자신의 서버 자원을 소비하지 않음
+        // - 외부 서버에 문제 발생 시 파일이 로딩되지 않음
+        // - 외부 서버 및 여러가지 다른 문제로 인하여 로딩 속도의 문제가 발생함
+
+    // jquery는 기본적으로 CSS 선택자를 사용하여 html 태그를 선택함
+
+    // jquery 사용 방법 : jquery는 기본적으로 $기호를 사용함
+        // - $ 기호가 나오면 jquery를 사용한다는 의미임
+        // - $(CSS선택자).jquery함수();
+        // - CSS 선택자를 그대로 사용하기 때문에 #은 id선택자, .은 클래스 선택자, html태그는 태그 선택자로 동작함
+        // - jquery는 기본적으로 자바 스크립트 문법을 그대로 사용하기 때문에 jquery의 함수를 제외하고는 자바 스크립트와 동일함
+    </script>
+    
+</head>
+<body>
+    <button id="btn01" type="button">자바 스크립트로 버튼 이벤트</button>
+    <button id="btn02" type="button">jquery로 버튼 이벤트</button>
+    <button id="btn03" type="button">cdn으로 jquery 로딩하여 버튼 이벤트</button>
+
+    <script>
+        var btn01 = document.getElementById("btn01");
+
+        btn01.addEventListener("click", function() {
+            alert("자바 스크립트로 버튼 이벤트 발생");
+        });
+        // html 선택부분과 실행영역을 나누어 입력
+
+        $("#btn02").on("click", function() {
+            alert("jquery로 버튼 이벤트 발생");
+        });
+        // html 선택과 동시에 실행영역 입력 소스코드도 짧음
+
+        $("#btn03").on("click", function() {
+            alert("cdn으로 jquery 로딩 후 버튼 이벤트 발생");
+        });
+    </script>
+</body>
+</html>

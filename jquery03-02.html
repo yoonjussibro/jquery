@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 3-2</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.2.0.js"></script>
+    <script>
+        // children(): 지정한 태그의 직계 자손를 선택
+            // - $(선택자).children()
+            // - $(선택자).children("필터")
+        // find(): 지정한 태그의 모든 후손 태그를 선택
+            // - $(선택자).find("필터")
+
+            $(document).ready(function() {
+                $("#div01 > div").children().css({
+                    "color" : "red",
+                    "border" : "2px solid red"
+                });
+
+                $("#div02 > div").children("p.first").css({
+                    "color" : "red",
+                    "border" : "2px solid red"
+                });
+
+
+                // $("#div03 > div").find("span").css({
+                //     "color" : "red",
+                //     "border" : "2px solid red"
+                // });
+
+                // find() 함수의 매개변수로 *로 입력하면 모든 후손태그를 선택함
+                $("#div03 > div").find("*").css({
+                    "color" : "red",
+                    "border" : "2px solid red"
+                });
+            });
+    </script>
+    <style>
+        .desc * {
+            display: block;
+            border:  2px solid lightgray;
+            color: lightgray;
+            padding: 5px;
+            margin: 15px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <div class="desc">지정한 div 태그를
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+        </div>
+    </div>
+
+        <br><hr><br>
+
+    <div id="div02">
+        <div class="desc">지정한 div 태그를
+            <p class="first">p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <p class="second">p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <h4 class="first">h4 (직계 자손)</h4>
+        </div>
+    </div>
+
+    <br><hr><br>
+    <div id="div03">
+
+        <div class="desc">지정한 div 태그를
+            <h3>find() 사용</h3>
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+            <p>p (직계 자손)
+                <span>span (후손 1단계)</span>
+            </p>
+        </div>
+    </div>
+
+    <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

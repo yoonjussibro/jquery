@@ -19,6 +19,8 @@
         // - html 태그를 한번 검색하여 여러가지 함수를 한번에 실행가능함
         // '.'기호를 사용하여 함수를 이어서 기술하면 됨
         // 사용법 : $(선택자).jquery함수1().jquery함수2().jquery함수3()....;
+
+        
     $(document).ready(function() {
         $("#div01 > .flip").on("click", function() {
             $("#div01 > .panel").slideDown(5000);
@@ -32,6 +34,13 @@
         // 메서드 체이닝
         $("#btn").on("click", function() {
             $("#p1").css("color", "red").slideUp(2000).slideDown(2000).fadeOut(2000).fadeIn(2000);
+
+            // jquery는 구문이 엄격하지 않기 때문에 아래와 같이 사용해도 상관없음
+            // $("#p1").css("color", "red")
+            // .slideUp(2000)
+            // .slideDown(2000)
+            // .fadeOut(2000)
+            // .fadeIn(2000);
         });
     });
 

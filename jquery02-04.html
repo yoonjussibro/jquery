@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 2-4</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.2.0.js"></script>
+    <script>
+        // jquery를 이용한 요소 제거
+        
+        // remove() : 선택한 요소를 제거(하위 요소를 포함하여 전부 제거)
+        // empty() : 선택한 요소에서 하위 요소를 제거
+            // - $(선택자).remove(지정할 요소1, 지정할 요소2, 지정할 요소3, ....) : 필터링을 통해서 원하는 요소만 삭제
+
+
+        // jquery를 이용하여 css클래스 가져오기/설정하기
+        
+        
+            // remove 사용
+        $(document).ready(function() {
+            $("#btnRemove").on("click", function() {
+                $("#divRemove").remove();
+            });
+
+            $("#btnEmpty").on("click", function() {
+                $("#divRemove").empty();
+            });
+
+            $("#btnRemoveFilter").on("click", function() {
+                $("#div02 > p").remove(".remove");
+            });
+
+        });    
+    </script>
+
+    <style>
+        .remove { color: red; }
+
+        #divRemove {
+            height: 200px;
+            width: 300px;
+            border: 1px solid black;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>remove 사용</h3>
+
+        <button id="btnRemove">클릭 시 아래의 div 삭제</button>
+
+        <button id="btnEmpty">클릭 시 아래의 div의 자손태그 삭제</button>
+
+
+        <div id="divRemove">
+            remove 함수를 사용하여 삭제될 텍스트
+            <p>remove 함수 사용하여 삭제될 태그</p>
+            <div style="height: 100px; width: 100px; background-color: cornflowerblue;">
+                <p>remove 함수를 사용하여 삭제될 자손 태그</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="div02">
+        <h3>필터링을 통한 삭제</h3>
+
+        <p>삭제되지 않을 p 태그</p>
+        <p class="remove">필터링을 통해 삭제될 p 태그</p>
+        <p class="remove">필터링을 통해 삭제될 p 태그</p>
+
+        <button id="btnRemoveFilter">클릭 시 지정한 것만 삭제</button>
+
+
+    </div>
+</body>
+</html>

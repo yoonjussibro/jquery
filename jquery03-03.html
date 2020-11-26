@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 3-3</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.2.0.js"></script>
+    <script>
+        // 형제 태그 선택하기
+        // siblings() : 선택한 요소의 모든 형제 요소를 선택
+            // - $(선택자).siblings()
+            // - $(선택자).siblings("필터")
+        // next() : 선택한 요소의 바로 다음 형제 요소를 선택
+            // - $(선택자).next()
+        // nextAll() : 선택한 요소의 바로 다음부터 끝까지 형제 요소를 선택
+            // - $(선택자).nextAll()
+        // nextUntil() : 선택한 요소와 지정한 요소 사이의 형제 요소를 선택
+            // - $(선택자).nextUntil("필터")
+        // prev() : 선택한 요소의 바로 이전 형제 요소를 선택
+        // prevAll() : 선택한 요소의 바로 이전부터 시작까지의 모든 형제 요소를 선택
+        // prevUntil() : 선택한 요소와 지정한 요소 사이의 형제 요소를 선택
+
+
+
+        $(document).ready(function() {
+            // siblings 사용
+            $("#div01 h2").siblings().css({
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            // siblings 필터 사용
+            $("#div02 h2").siblings("p").css({
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            // next 사용
+            $("#div03 h2").next().css({
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            // nextAll 사용
+            $("#div04 h2").nextAll().css({
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+
+            // nextUntil 사용
+            $("#div05 h2").nextUntil("h6").css({
+                "color" : "red",
+                "border" : "2px solid red"
+            });
+        })
+    </script>
+
+    <style>
+        .siblings * {
+            display: block;
+            border: 2px solid lightgray;
+            color: lightgray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01">
+        <h3>siblings() 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그  p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h3</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div02">
+        <h3>siblings() 필터 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그  p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h3</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div03">
+        <h3>next() 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그  p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h3</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div04">
+        <h3>nextAll() 사용</h3>
+        <div class="siblings">
+            <div>부모 태그 div
+                <p>prev 2번째 형제 태그  p</p>
+                <span>prev 형제 태그 span</span>
+                <h2>지정한 태그 h3</h2>
+                <h3>next 형제 태그 h3</h3>
+                <p>next 2번째 형제 태그 p</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="div05">
+        <h3>nextUntil() 사용</h3>
+        <div class="siblings">
+            <p>prev 2번째 형제 태그 p</p>
+            <span>prev 형제 태그 span</span>
+            <h2>지정한 태그 h2</h2>
+            <h3>next 형제 태그 h3</h3>
+            <h4>next 2번째 형제 태그 h4</h4>
+            <h5>next 3번째 형제 태그 h5</h5>
+            <h6>next 4번째 형제 태그 h6</h6>
+            <p>next 5번째 형제 태그 p</p>
+        </div>
+
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

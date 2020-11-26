@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 2-3</title>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./jquery.color-2.2.0.js"></script>
+    <script>
+        // jquery를 이용하여 dom 요소 추가 삭제
+
+        // append() : 선택한 요소의 끝에 콘텐츠 삽입
+            // - $(선택자).append(입력할 내용1, 내용2, 내용3, ...) : 입력할 내용은 html 코드, jquery, 자바스크립트 dom 객체 가능
+            // - 동시에 여러개의 요소를 입력할 수 있음
+
+        // prepend() : 선택한 요소의 시작 부분에 콘텐츠 삽입
+            // - $(선택자).prepend(입력할 내용) : append와 동일함
+        // after() : 선택한 요소의 뒤에 콘텐츠 삽입
+            // - $(선택자).after(입력할 내용) : 선택한 요소의 바로 뒤에  추가됨
+        // before() : 선택한 요소의 앞에 콘텐츠 삽입
+            // - $(선택자).before(입력할 내용) : after와 동일하게 선택 요소의 바로 앞에 추가됨
+
+        
+        $(document).ready(function() {
+            var appendTextCount = 0;
+            var appendListCount = 0;
+
+            $("#btnAppend1").on("click", function() {
+                appendTextCount++;
+                // $("#pAppend1").append(" <b>추가된 문자열</b> ");
+                $("#pAppend1").append(" <b>추가된 문자열 " + appendTextCount + "</b>");
+            });
+            $("#btnAppend2").on("click", function() {
+                appendListCount++;
+                // $("#olAppend1").append("<li>추가된 아이템</li>");
+                $("#olAppend1").append("<li>추가된 아이템 " + appendListCount + "</li>");
+            });
+
+            // prepend() 사용하기
+            var prependTextCount = 0;
+            var prependListCount = 0;
+
+            $("#btnPre1").on("click", function() {
+                prependTextCount++;
+                $("#pPre1").prepend("<b>추가된 문자열 " + prependTextCount + " </b>");
+            });
+
+            $("#btnPre2").on("click", function() {
+                prependListCount++;
+                $("#olPre1").prepend("<li>추가된 아이템 " + prependListCount + " </li>");
+            });
+
+            $("#btnAppendMulti").on("click", function() {
+                // html 코드를 사용해서 p태그 추가
+                var text1 = "<p>추가된 p태그 1 </p>";
+                // jquery 코드를 사용해서 p태그 추가
+                var text2 = $("<p></p>").text("추가된 p태그 2 ");
+                // 순수 자바 스크립트 코드를 사용해서 p 태그 추가
+                var text3 = document.createElement("p");
+                text3.innerHTML = "추가된 p태그 3 ";
+
+                $("#div03").append(text1, text2, text3);
+            });
+
+            // before / after 사용하기
+            var beforeCount = 0;
+            var afterCount = 0;
+            $("#btnBefore").on("click", function() {
+                beforeCount++;
+                $("#imgBA").before(" <b>before" + beforeCount + "</b> ");
+            });
+            $("#btnafter").on("click", function() {
+                afterCount++;
+                $("#imgBA").after(" <i>after" + afterCount + "</i> ");
+            });
+
+            $("#btnAll").on("click", function() {
+                var txt1 = "<b>html로 추가</b>";
+                var txt2 = $("<i></i>").text("jquery로 추가");
+                var txt3 = document.createElement("strong");
+                txt3.innerHTML = "순수 자바스크립트로 추가!!";
+
+                $("#imgBA2").after(txt1, txt2, txt3);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="div01">
+        <h3>append() 사용하기</h3>
+
+        <p id="pAppend1">버튼 클릭 시 추가될 문자열</p>
+        <ol id="olAppend1">
+            <li>리스트 아이템 1</li>
+            <li>리스트 아이템 2</li>
+            <li>리스트 아이템 3</li>
+        </ol>
+
+        <button id="btnAppend1">Append Text</button>
+        <button id="btnAppend2">Append item</button>
+    </div>
+
+    <div id="div02">
+        <h3>prepend() 사용하기</h3>
+
+        <p id="pPre1">버튼 클릭 시 추가될 문자열</p>
+        <ol id="olPre1">
+            <li>리스트 아이템 1</li>
+            <li>리스트 아이템 2</li>
+            <li>리스트 아이템 3</li>
+        </ol>
+
+        <button id="btnPre1">Prepend Text</button>
+        <button id="btnPre2">Prepend Items</button>
+
+    </div>
+
+    <br><hr><br>
+    
+    <div id="div03">
+        <p id="pAppendMulti">버튼 클릭 시 추가될 문자열</p>
+        <button id="btnAppendMulti">클릭 시 p 태그 추가</button>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div04">
+        <h3>before/after 사용하기</h3>
+
+        <img id="imgBA" src="./images/in_seang1.jpg" alt="">
+        <br><br>
+
+        <button id="btnBefore">Before 사용</button>
+        <button id="btnafter">After 사용</button>
+    </div>
+
+    <br><hr><br>
+
+    <div id="div05">
+        <img id="imgBA2" src="./images/in_seang2.jpg" alt="">
+        <br>
+        <p></p>
+
+        <button id="btnAll">클릭 시 3가지 방법으로 추가</button>
+    </div>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
